@@ -13,3 +13,12 @@ Awesome rich presence manager
      * Left mode
      * No time checking
 
+## Todo list
+
+ * Add standard assets
+ * Field validation (details and states must not be a null)
+ * (For normal users) Binary file upload
+ * Travis-CI integration
+ * Sonarcloud integration
+ * Separate ipc library
+ * MAKE LOG-FILE GREAT AGAIN
