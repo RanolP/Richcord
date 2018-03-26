@@ -33,7 +33,6 @@ dependencies {
     compile group: 'org.fusesource.jansi', name: 'jansi', version: '1.16'
     compile group: 'net.java.dev.jna', name: 'jna', version: '4.5.1'
 
-    // compile group: 'net.dv8tion', name: 'JDA', version: '3.5.1_352'
     compile group: 'com.jagrosh', name: 'DiscordIPC', version: '0.3'
 
     compile group: 'com.github.kittinunf.fuel', name: 'fuel', version: '1.12.1'
