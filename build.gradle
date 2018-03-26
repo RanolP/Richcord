@@ -1,0 +1,61 @@
+buildscript {
+    ext.kotlin_version = '1.2.30'
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath group: 'org.jetbrains.kotlin', name: 'kotlin-gradle-plugin', version: kotlin_version
+    }
+}
+
+plugins {
+    id 'application'
+}
+
+apply plugin: 'kotlin'
+
+group = 'io.github.ranolp'
+version = '0.1.0-SNAPSHOT'
+
+mainClassName = 'io.github.ranolp.richcord.RichcordKt'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: kotlin_version
+
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compile group: 'org.fusesource.jansi', name: 'jansi', version: '1.16'
+    compile group: 'net.java.dev.jna', name: 'jna', version: '4.5.1'
+
+    // compile group: 'net.dv8tion', name: 'JDA', version: '3.5.1_352'
+    compile group: 'com.jagrosh', name: 'DiscordIPC', version: '0.3'
+
+    compile group: 'com.github.kittinunf.fuel', name: 'fuel', version: '1.12.1'
+
+    compile group: 'com.github.salomonbrys.kotson', name: 'kotson', version: '2.5.0'
+
+    compile group: 'com.jfoenix', name: 'jfoenix', version: '8.0.1'
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+jar {
+    manifest {
+        attributes 'Title': 'Richcord', 'Version': version, 'Main-Class': mainClassName
+    }
+    from configurations.runtime.collect {
+        it.isDirectory() ? it : zipTree(it)
+    }
+}

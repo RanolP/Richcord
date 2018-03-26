@@ -1,0 +1,19 @@
+.root {
+    -fx-font-family: "Noto Sans", sans-serif;
+    -fx-font-size: 16px;
+}
+
+.jfx-text-field {
+    -jfx-label-float: true;
+    -jfx-focus-color: #1565C0;
+    -jfx-unfocus-color: #BBDEFB;
+}
+
+.jfx-button {
+    -fx-background-color: #1976D2;
+    -fx-text-fill: #E3F2FD;
+}
+
+.progress-indicator {
+    -fx-fill: #66BB6A;
+}

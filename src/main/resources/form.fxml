@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane fx:id="pane" prefHeight="400" prefWidth="640" stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="io.github.ranolp.richcord.ui.FormController">
+    <children>
+        <JFXTextField fx:id="title" layoutX="25" layoutY="30" prefHeight="30" prefWidth="200" promptText="Title"/>
+        <JFXTextField fx:id="details" layoutX="25" layoutY="90" prefHeight="30" prefWidth="200" promptText="Details"/>
+        <JFXTextField fx:id="states" layoutX="25" layoutY="150" prefHeight="30" prefWidth="200" promptText="States"/>
+
+        <ImageView fx:id="currentImage" fitHeight="100" fitWidth="100" layoutX="75" layoutY="210" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@assets/default.png"/>
+            </image>
+        </ImageView>
+        <JFXButton fx:id="imageSelector" layoutX="75" layoutY="330" prefHeight="30" prefWidth="100" text="Select"/>
+
+
+        <JFXRadioButton fx:id="elapsedMode" layoutX="265" layoutY="30" prefHeight="30" prefWidth="100"
+                        text="Elapsed mode">
+            <toggleGroup>
+                <ToggleGroup fx:id="mode"/>
+            </toggleGroup>
+        </JFXRadioButton>
+
+        <JFXTextField fx:id="startTime" layoutX="300" layoutY="60" prefHeight="30" prefWidth="200" editable="false"/>
+        <JFXButton fx:id="syncTime" layoutX="520" layoutY="62" prefHeight="30" prefWidth="100" text="Sync time"/>
+
+        <JFXRadioButton fx:id="leftMode" layoutX="265" layoutY="110" prefHeight="30" prefWidth="100" text="Left mode"
+                        toggleGroup="$mode"/>
+
+        <JFXDatePicker fx:id="endDatePicker" layoutX="300" layoutY="140" prefHeight="30" prefWidth="200"/>
+        <JFXTimePicker fx:id="endTimePicker" layoutX="300" layoutY="180" prefHeight="30" prefWidth="200"/>
+
+        <JFXRadioButton fx:id="noCheckMode" layoutX="265" layoutY="225" prefHeight="30" prefWidth="100"
+                        text="No time checking" toggleGroup="$mode" selected="true"/>
+
+        <ProgressIndicator fx:id="spinner" layoutX="430" layoutY="265" opacity="0" prefHeight="50" prefWidth="50"/>
+
+        <ImageView fx:id="icon" fitHeight="50" fitWidth="50" layoutX="430" layoutY="265" opacity="0" pickOnBounds="true"
+                   preserveRatio="true"/>
+
+        <JFXButton fx:id="updateRichPresence" layoutX="360" layoutY="330" prefHeight="30" prefWidth="200"
+                   text="Update Rich Presence"/>
+    </children>
+</AnchorPane>
