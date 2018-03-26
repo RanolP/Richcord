@@ -1,4 +1,7 @@
+[![Travis](https://img.shields.io/travis/RanolP/Richcord.svg)](https://travis-ci.org/RanolP/Richcord) 
+
 # Richcord
+
 Awesome rich presence manager
 
 ## Features
