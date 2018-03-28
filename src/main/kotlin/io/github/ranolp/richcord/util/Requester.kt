@@ -5,6 +5,7 @@ import com.github.kittinunf.fuel.core.Method
 import com.github.kittinunf.fuel.core.Request
 import com.github.salomonbrys.kotson.*
 import com.google.gson.JsonElement
+import java.io.InputStream
 import java.nio.file.Path
 
 object Requester {
@@ -123,6 +124,24 @@ object Requester {
                 "name": "$name",
                 "type": "${type.id}",
                 "image": "data:image/${path.extension};base64,${path.readAllBytes().encodeBase64()}"
+            }""".trimIndent()
+                )
+                it.headers["Content-Type"] = "application/json"
+            }, success = {
+                // logger().info(it)
+                true
+            }, failure = {
+                false
+            })
+
+        fun createResource(name: String, extension: String, inputStream: InputStream, type: Resource.Type): Boolean =
+            request("applications/${application.id}/assets", Method.POST, request = {
+                it.body(
+                    """
+            {
+                "name": "$name",
+                "type": "${type.id}",
+                "image": "data:image/$extension;base64,${inputStream.readBytes().encodeBase64()}"
             }""".trimIndent()
                 )
                 it.headers["Content-Type"] = "application/json"

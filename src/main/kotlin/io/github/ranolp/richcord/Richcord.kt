@@ -4,7 +4,7 @@ import com.jagrosh.discordipc.IPCClient
 import io.github.ranolp.richcord.util.client
 import io.github.ranolp.richcord.util.isClientInitialized
 import io.github.ranolp.richcord.util.logger
-import io.github.ranolp.richcord.util.toPath
+import io.github.ranolp.richcord.util.resourceOf
 import javafx.application.Platform
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
@@ -21,7 +21,7 @@ fun main(args: Array<String>) {
 
 class Richcord : JavaFxApplication() {
     override fun start(stage: Stage) {
-        val parent = FXMLLoader.load<Parent>("form.fxml".toPath().toFile().toURI().toURL())
+        val parent = FXMLLoader.load<Parent>(resourceOf("form.fxml"))
         val scene = Scene(parent)
 
         stage.scene = scene

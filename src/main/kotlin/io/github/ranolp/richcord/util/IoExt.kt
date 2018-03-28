@@ -2,6 +2,7 @@ package io.github.ranolp.richcord.util
 
 import java.io.BufferedReader
 import java.io.InputStream
+import java.net.URL
 import java.nio.charset.Charset
 import java.nio.file.Files
 import java.nio.file.Path
@@ -28,3 +29,7 @@ val Path.name: String
 
 val Path.extension: String
     get() = toFile().extension
+
+fun Any.resourceOf(name: String): URL = javaClass.classLoader.getResource(name)
+
+fun Any.streamResourceOf(name: String): InputStream = javaClass.classLoader.getResourceAsStream(name)

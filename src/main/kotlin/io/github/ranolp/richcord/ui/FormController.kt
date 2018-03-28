@@ -28,8 +28,10 @@ import kotlin.system.exitProcess
 
 class FormController {
     object Icons {
-        val DONE = Image("assets/ic_done_black_64dp.png".toPath().newInputStream())
-        val ERROR = Image("assets/ic_error_outline_red_48pt_3x.png".toPath().newInputStream())
+        val DONE = Image(streamResourceOf("assets/ic_done_black_64dp.png"))
+        val ERROR = Image(streamResourceOf("assets/ic_error_outline_red_48pt_3x.png"))
+
+        val DEFAULT = streamResourceOf("assets/default.png")
     }
 
     @FXML
@@ -96,10 +98,10 @@ class FormController {
             token = TextInputDialog().also {
                 it.title = "Insert token"
                 it.headerText =
-                        """We use discord token which is required when creating and updating application.
-                           Enable developer mode and press `Ctrl + Shift + I`.
+                        """We use discord token which is required when creating and updating
+                           application. Enable developer mode and press `Ctrl + Shift + I`.
                            Open the application tab, You can find token in local storage.
-                           Copy and paste it to this dialog."""
+                           Copy and paste it to this dialog.""".trimIndent()
                 it.contentText = "Discord token required: "
             }.also { dialog ->
                 dialog.setResultConverter {
@@ -186,6 +188,16 @@ class FormController {
                     fileDirectory.toPath(),
                     Requester.RichPresence.Resource.Type.BIG
                 )
+                Tooltip.install(currentImage, Tooltip(fileDirectory.toPath().name))
+            } else {
+                richPresence.createResource(
+                    large,
+                    "png",
+                    Icons.DEFAULT,
+                    Requester.RichPresence.Resource.Type.BIG
+                )
+                currentImage.image = Image(Icons.DEFAULT)
+                Tooltip.install(currentImage, Tooltip("No image provided"))
             }
             logger().info("Resource uploaded, wait a moment.")
 
@@ -199,7 +211,6 @@ class FormController {
             config.write(configPath)
             logger().info("Config saved.")
 
-            Tooltip.install(currentImage, Tooltip(fileDirectory.toPath().name))
             logger().info("Tooltip installed.")
 
             sendRichPresence(
